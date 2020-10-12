@@ -1,4 +1,4 @@
-package com.example.examplemod.mixins;
+package dev.sebastianb.baritonetemplate.mixins;
 
 import net.minecraft.block.BlockDirt;
 import net.minecraftforge.fml.common.FMLLog;
@@ -15,5 +15,6 @@ public abstract class MixinBlockDirt
     {
         // you really should not be using FMLLog.
         FMLLog.info("Hello from Mixins!");
+
     }
 }

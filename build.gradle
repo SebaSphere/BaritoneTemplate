@@ -18,8 +18,8 @@ apply plugin: 'com.github.johnrengelman.shadow'
 
 
 version = '1.0'
-group = 'com.example.examplemod' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = 'examplemod'
+group = 'dev.sebastianb.baritonetemplate' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = 'baritonetemplate'
 
 sourceCompatibility = targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
 compileJava {
@@ -29,7 +29,7 @@ compileJava {
 minecraft {
     version = '1.12.2-14.23.5.2847'
     runDir = 'run'
-    coreMod = 'com.example.examplemod.ExampleModLoadingPlugin'
+    coreMod = 'dev.sebastianb.baritonetemplate.MixinLoaderForge'
     // the mappings can be changed at any time, and must be in the following format.
     // snapshot_YYYYMMDD   snapshot are built nightly.
     // stable_#            stables are built at the discretion of the MCP team.
@@ -41,14 +41,24 @@ minecraft {
 
 jar.manifest.attributes(
         'FMLCorePluginContainsFMLMod': true,
-        'FMLCorePlugin': 'com.example.examplemod.ExampleModLoadingPlugin',
+        'FMLCorePlugin': 'dev.sebastianb.baritonetemplate.MixinLoaderForge',
         'ForceLoadAsMod': true,
         'TweakClass': 'org.spongepowered.asm.launch.MixinTweaker'
 )
 
 repositories {
     mavenCentral()
-    maven { url = 'https://repo.spongepowered.org/maven' }
+    maven {
+        url = "http://repo.spongepowered.org/maven/"
+    }
+    maven {
+        name = 'impactdevelopment-repo'
+        url = 'https://impactdevelopment.github.io/maven/'
+    }
+    maven {
+        name = "jitpack.io"
+        url = "https://jitpack.io"
+    }
 }
 
 dependencies {
@@ -74,10 +84,13 @@ dependencies {
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
 
     compile 'org.spongepowered:mixin:0.8.1-SNAPSHOT'
+
+    compile 'com.github.cabaletta:baritone:1.2.14'
+    compile 'cabaletta:baritone-api:1.2'
 }
 
 mixin {
-    add sourceSets.main, 'mixins.examplemod.refmap.json'
+    add sourceSets.main, 'mixins.baritonetemplate.refmap.json'
 }
 
 shadowJar {

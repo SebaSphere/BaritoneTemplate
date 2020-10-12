@@ -1,7 +1,7 @@
 {
     "required": true,
-    "package": "com.example.examplemod.mixins",
-    "refmap": "mixins.examplemod.refmap.json",
+    "package": "dev.sebastianb.baritonetemplate.mixins",
+    "refmap": "mixins.baritonetemplate.refmap.json",
     "minVersion": "0.7.3",
     "compatibilityLevel": "JAVA_8",
     "mixins": [
